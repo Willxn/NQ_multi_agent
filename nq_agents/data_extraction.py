@@ -4,10 +4,8 @@ import os
 from tqdm import tqdm
 
 
-TRAIN_FILE = '.data/simplified-nq-train.jsonl'
-DEV_FILE = '.data/v1.0-simplified_nq-dev-all.jsonl'
-TRAIN_FILE_2000 = '.data/train_top2000.jsonl'
-DEV_FILE_2000 = '.data/train_top2000_dev.jsonl' 
+TRAIN_FILE = '.local_data/simplified-nq-train.jsonl'
+DEV_FILE = '.local_data/v1.0-simplified_nq-dev-all.jsonl'
 
 
 def count_lines(file_path):
@@ -25,6 +23,12 @@ def read_first_lines(file_path, num_lines=5):
     with open(file_path, 'r') as file:
         for _ in range(num_lines):
             print(file.readline().strip())
+
+def list_to_jsonl(data_list, output_file):
+    with open(output_file, 'w', encoding='utf-8') as file:
+        for item in data_list:
+            json_line = json.dumps(item, ensure_ascii=False)
+            file.write(json_line + '\n')
 
 def parse_first_lines(file_path, num_lines=5):
     output = []
@@ -85,6 +89,8 @@ def sample_short_ans_examples(file_path, output_path=None, k=100, seed=42):
     """Sample k examples with short answer from input jsonl and write to output jsonl."""
     temp_path = file_path.replace('.jsonl', '_temp.jsonl')
     keep_short_ans_examples(file_path, temp_path)
+    if output_path is None:
+        output_path = file_path.replace('.jsonl', f'_sample{k}_seed{seed}.jsonl')
     output = sample_examples(temp_path, output_path, k, seed)
     os.remove(temp_path)
     return output
