@@ -20,9 +20,11 @@ def count_lines(file_path):
 
 def read_first_lines(file_path, num_lines=5):
     """Read the first num_lines lines from a file."""
+    output = []
     with open(file_path, 'r') as file:
         for _ in range(num_lines):
-            print(file.readline().strip())
+            output.append(json.loads(file.readline().strip()))
+    return output
 
 def list_to_jsonl(data_list, output_file):
     with open(output_file, 'w', encoding='utf-8') as file:
