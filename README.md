@@ -17,10 +17,10 @@ Initial answer: Yes, a UCC - 1 financing statement can be filed on an individual
 Cut answer: Yes, a UCC - 1 financing statement can be filed on an individual.
 Refined answer: Yes, a UCC can be filed on an individual.
 Refined answer: Yes, a UCC can be filed on an individual.
-- - - - - - - - - - 
 5
 gold_answer: []
 final_answer: Yes, a UCC can be filed on an individual.
+
 
 Example 2/2
 Question: who is the guy who walked across the twin towers
@@ -28,7 +28,6 @@ Initial answer: Philippe Petit
 Cut answer: Philippe Petit
 Refined answer: Petit
 Refined answer: Petit
-- - - - - - - - - - 
 5
 gold_answer: ['Philippe Petit', 'Philippe Petit', 'Philippe Petit', 'Philippe Petit', 'Philippe Petit']
 final_answer: Petit
